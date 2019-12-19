@@ -10,6 +10,7 @@ public class User {
     private long user_id;
     private String user_name;
     private String sex;
+    private int age;
 
     public long getUser_id() {
         return user_id;
@@ -33,6 +34,14 @@ public class User {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     @Override

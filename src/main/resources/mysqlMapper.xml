@@ -6,15 +6,13 @@
  注意：使用mapper代理方法开发，namespace有特殊重要的作用
  -->
 <mapper namespace="test">
-    <!-- 在映射文件中配置很多sql语句 -->
-    <!--需求:通过id查询用户表的记录 -->
+    <!-- 在映射文件中配置很多sql语句，起到sql语句环境隔离 -->
+
     <!-- 通过select执行数据库查询
-     id:标识映射文件中的sql，称为statement的id
-     将sql语句封装到mappedStatement对象中，所以将id称为statement的id
+     id:标识映射文件中的sql，称为statement的id将sql语句封装到mappedStatement对象中，所以将id称为statement的id
      parameterType:指定输入参数的类型
      #{}标示一个占位符,
      #{value}其中value表示接收输入参数的名称，如果输入参数是简单类型，那么#{}中的值可以任意。
-
      resultType：指定sql输出结果的映射的java对象类型，select指定resultType表示将单条记录映射成java对象
      -->
     <select id="findUserById" parameterType="int" resultType="po.User">
@@ -30,6 +28,21 @@
     <select id="findUserByName" parameterType="java.lang.String" resultType="po.User">
         SELECT * FROM mybatais WHERE user_name LIKE '%${value}%'
     </select>
+
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="user_id" parameterType="po.User">
+           INSERT into mybatais(user_name, sex, age) values (#{user_name},#{sex},#{age})
+
+    </insert>
+
+    <update id="updateUser" parameterType="po.User">
+        UPDATE mybatais SET user_name=#{user_name},sex=#{sex},age=#{age} where user_id=#{user_id}
+    </update>
+
+
+    <delete id="deleteUser" parameterType="java.lang.String">
+        delete from mybatais where user_name=#{user_name}
+    </delete>
+
 
 </mapper>
 
