@@ -1,4 +1,4 @@
-package po;
+package Enity;
 
 /**
  * Author:lp on 2019/12/19 10:25
@@ -11,6 +11,17 @@ public class User {
     private String user_name;
     private String sex;
     private int age;
+
+    public User() {
+
+    }
+
+    public User(String user_name, String sex, int age) {
+        this.user_name = user_name;
+        this.sex = sex;
+        this.age = age;
+
+    }
 
     public long getUser_id() {
         return user_id;

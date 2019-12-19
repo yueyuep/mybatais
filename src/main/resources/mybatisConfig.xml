@@ -18,6 +18,8 @@
     </environments>
     <mappers>
         <!--   数据库的sql映射文件     -->
+
         <mapper resource="mysqlMapper.xml"/>
+        <mapper resource="UserMapper.xml"/>
     </mappers>
 </configuration>
